@@ -108,6 +108,10 @@ unsigned int Shader::get_program_id() const {
     return m_id;
 }
 
+void Shader::set_vec4(std::string_view name, const V4f &color) const {
+	glUniform4f(glGetUniformLocation(m_id, name.data()), color.x, color.y, color.z, color.w);
+}
+
 
 
 

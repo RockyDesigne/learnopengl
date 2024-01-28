@@ -8,7 +8,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Wall -pedantic")
 
 include_directories(headers)
 
-set(SOURCES src/main.cpp src/Shader.cpp src/glad.c headers/Shader.h headers/Window.h src/Window.cpp headers/ShapeBuffer.h src/ShapeBuffer.cpp src/Shape.cpp headers/Triangle.h src/Triangle.cpp src/Square.cpp)
+set(HEADERS headers/Shader.h headers/Window.h headers/ShapeBuffer.h headers/Triangle.h)
+
+set(SOURCES src/main.cpp src/Shader.cpp src/glad.c src/Window.cpp  src/ShapeBuffer.cpp src/Shape.cpp  src/Triangle.cpp src/Square.cpp)
 
 configure_file(./shaders/vertex.glsl ${CMAKE_BINARY_DIR}/vertex.glsl)
 configure_file(./shaders/fragment.glsl ${CMAKE_BINARY_DIR}/fragment.glsl)

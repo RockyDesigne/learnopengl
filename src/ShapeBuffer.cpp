@@ -4,14 +4,15 @@
 
 #include "ShapeBuffer.h"
 
-ShapeBuffer::ShapeBuffer(const float *vertices, GLsizei size) : m_size{size}
+
+ShapeBuffer::ShapeBuffer(const std::vector<float>& vertices) : m_vertices{vertices}
 {
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
 
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float)*m_vertices.size(), vertices.data(), GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
     glEnableVertexAttribArray(0);
@@ -32,4 +33,8 @@ void ShapeBuffer::unbind() const {
 ShapeBuffer::~ShapeBuffer() {
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
+}
+
+void ShapeBuffer::setVertices(const std::vector<float> &vertices) {
+
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <string_view>
 #include <glad.h>
+#include "la.h"
 class Shader
 {public:
 	Shader(const char* vertexPath, const char* fragmentPath);
@@ -8,6 +9,7 @@ class Shader
 	void set_bool(std::string_view name, bool value) const;
 	void set_int(std::string_view name, int value) const;
 	void set_float(std::string_view name, float value) const;
+	void set_vec4(std::string_view name, const V4f& color) const;
     unsigned int get_program_id() const;
 private:
 	unsigned int m_id{};

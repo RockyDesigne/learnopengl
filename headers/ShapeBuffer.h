@@ -6,18 +6,21 @@
 #define LEARNGL_SHAPEBUFFER_H
 #include <glad.h>
 #include <glfw3.h>
-
+#include <vector>
+#include "la.h"
 class ShapeBuffer
 {
 public:
-    ShapeBuffer(const float* vertices, GLsizei size);
+    ShapeBuffer(const std::vector<float>& vertices);
     void bind() const;
     void unbind() const;
+    virtual void draw() = 0;
+    void setVertices(const std::vector<float>& vertices);
     ~ShapeBuffer();
 private:
     GLuint VAO;
     GLuint VBO;
-    GLsizei m_size;
+    std::vector<float> m_vertices;
 };
 
 #endif //LEARNGL_SHAPEBUFFER_H

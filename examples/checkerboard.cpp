@@ -8,23 +8,23 @@
 #endif
 #include "la.h"
 
-int main()
+int main1()
 {
-	Window window{ 0,0,800,600 };
+    Window window{ 0,0,800,600 };
 
-	window.set_key_callback([](GLFWwindow* win, int key, int scancode, int action, int mods)
-		{
-			switch (key)
-			{
-			case GLFW_KEY_ESCAPE:
-			{
-				if (action == GLFW_PRESS) {
-					glfwSetWindowShouldClose(win, true);
-				}
-				break;
-			}
-			}
-		});
+    window.set_key_callback([](GLFWwindow* win, int key, int scancode, int action, int mods)
+                            {
+                                switch (key)
+                                {
+                                    case GLFW_KEY_ESCAPE:
+                                    {
+                                        if (action == GLFW_PRESS) {
+                                            glfwSetWindowShouldClose(win, true);
+                                        }
+                                        break;
+                                    }
+                                }
+                            });
 
     Shader ourShader{"vertex.glsl", "fragment.glsl"};
 
@@ -66,12 +66,12 @@ int main()
     };
 
 
-	while (!glfwWindowShouldClose(window.get_windowPtr()))
-	{
-		window.update({drawShapes});
+    while (!glfwWindowShouldClose(window.get_windowPtr()))
+    {
+        window.update({drawShapes});
         ourShader.use();
 
-	}
+    }
 
-	return 0;
+    return 0;
 }

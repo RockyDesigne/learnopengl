@@ -9,8 +9,12 @@
 #include <glfw3.h>
 class Shape : public ShapeBuffer {
 public:
-    Shape(const float* vertices, GLsizei size) : ShapeBuffer{vertices,size} {}
-    virtual void draw() = 0;
+    Shape(const std::vector<float>& vertices, const V4f& color) : ShapeBuffer {vertices}, m_color{color} {}
+    Shape()=default;
+    void setColor(const V4f& color);
+    V4f getColor() const;
+private:
+    V4f m_color;
 };
 
 

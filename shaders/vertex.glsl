@@ -1,9 +1,9 @@
 #version 330 core
 layout(location=0)in vec3 aPos;
-uniform float offset;
-out vec3 ourColor;
+uniform vec4 ourColor;
+out vec4 color;
 void main()
 {
-    gl_Position = vec4(aPos.x + offset,aPos.y,aPos.z, 1.0);
-    ourColor =  aPos;
+    gl_Position = vec4(aPos,1.0f);
+    color = ourColor;
 }
